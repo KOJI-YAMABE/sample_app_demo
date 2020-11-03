@@ -5,6 +5,7 @@ class TodolistsController < ApplicationController
 
   def create
     list = List.new(list_params)
+    list.score = Language.get_date(list_params[:body])
     list.save
     tags = Vision.get_image_date(list.image)
     tags.each do |tag|
